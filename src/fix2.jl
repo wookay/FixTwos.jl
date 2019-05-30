@@ -10,6 +10,8 @@ for f in (^,
           ∉,
           ∋,
           ∌,
+          ∘,
+          occursin,
           mod,
           isless,
           issubset,
@@ -18,7 +20,6 @@ for f in (^,
     op = nameof(f)
     @eval Base.$op(x) = Fix2($op, x)
 end
-
 
 ## Base.filter
 function Base.filter(f::Fix2{Type{Pair}, V}, d::AbstractDict{K, V}) where {K, V}
@@ -41,8 +42,8 @@ function Base.filter(f::Fix2{Type{Pair}, V}, a::Vector{Pair{K, V}}) where {K, V}
     return df
 end
 
-function Base.filter(f::Fix2{Type{Pair}, V}, nt::NamedTuple{names, NTuple{N, V}}) where {names, N, V}
-    (; filter(kv -> kv.second==f.x, pairs(nt))...)
+function Base.filter(f::Fix2{typeof(==), V}, nt::NamedTuple{names, NTuple{N, V}}) where {names, N, V}
+    (; filter(kv -> f(kv.second), pairs(nt))...)
 end
 
 # module FixTwos

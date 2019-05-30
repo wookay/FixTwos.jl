@@ -9,6 +9,4 @@ using FixTwos
 
 @test map(^(2))(1:3) == [1, 4, 9] == map(^(2), 1:3) == .^(1:3, 2)
 
-@test parse(Int)("3") == 3 == parse(Int, "3")
-
 end # module test_fixtwos_fix1

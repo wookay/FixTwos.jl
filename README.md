@@ -13,6 +13,6 @@ julia> filter(=>(3), [:a=>3, :b=>3, :c=>0])
  :a => 3
  :b => 3
 
-julia> filter(=>(3), (a=3, b=3, c=0))
+julia> filter(==(3), (a=3, b=3, c=0))
 (a = 3, b = 3)
 ```
