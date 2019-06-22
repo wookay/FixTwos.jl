@@ -16,7 +16,7 @@ for f in (^,
           isless,
           issubset,
           haskey,
-          (VERSION < v"1.2" ? (!=, >=, <=, >, <) : ())...)
+          (VERSION < v"1.2.0-rc" ? (!=, >=, <=, >, <) : ())...)
     op = nameof(f)
     @eval Base.$op(x) = Fix2($op, x)
 end
